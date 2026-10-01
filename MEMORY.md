@@ -50,7 +50,7 @@
 - Созданы публичные бакеты `vershina71.ru` (статический сайт: `index.html`, ошибка: `index.html`) и `www.vershina71.ru` (HTTPS-редирект на основной домен).
 - Создана Cloud DNS-зона `vershina71.ru.`: `dns9hc6ec1t89j77rka1`. После завершения миграции делегировать домен на `ns1.yandexcloud.net` и `ns2.yandexcloud.net` в REG.RU; рабочие записи — ANAME `@` на `vershina71.ru.website.yandexcloud.net.` и CNAME `www` на `www.vershina71.ru.website.yandexcloud.net.`.
 - Делегирование в REG.RU переключено на `ns1.yandexcloud.net` и `ns2.yandexcloud.net` 01.10.2026. CAA-запись зоны разрешает выпуск Let’s Encrypt: `0 issue "letsencrypt.org"`.
-- Запрошен управляемый сертификат Let’s Encrypt `vershina71-ru` (`fpql3936rsi6aor5h3tu`) для `vershina71.ru` и `www.vershina71.ru`; обе CNAME-записи `_acme-challenge` созданы в Cloud DNS. После статуса `Issued` привязать его к обоим бакетам в настройках HTTPS.
+- Управляемый сертификат Let’s Encrypt `vershina71-ru` (`fpql3936rsi6aor5h3tu`) выпущен для `vershina71.ru` и `www.vershina71.ru`; обе CNAME-записи `_acme-challenge` созданы в Cloud DNS. Сертификат привязан к обоим бакетам в настройках HTTPS.
 - Для GitHub Actions создан сервисный аккаунт `vershina71-deployer` (`ajeiundvto7br9h83cg6`) с ролью `storage.editor` в каталоге. Статический ключ лежит только в GitHub Actions Secrets под именами `YC_STATIC_ACCESS_KEY_ID` и `YC_STATIC_SECRET_ACCESS_KEY`; значения ключа не сохранять в репозитории и документации.
 - GitHub Pages оставлен включённым как аварийный откат до подтверждённой работы Object Storage и HTTPS.
 
