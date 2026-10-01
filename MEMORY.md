@@ -44,6 +44,14 @@
 - DNS в REG.RU настроен владельцем: четыре A-записи GitHub Pages для `@` и CNAME `www` на `radzun9080002222-ship-it.github.io`.
 - После создания сайта в Яндекс Вебмастере отправить главную страницу и sitemap на переобход.
 
+## Яндекс Cloud — миграция хостинга (01.10.2026)
+
+- GitHub `main` остаётся источником истины. Добавлен workflow `.github/workflows/deploy-yandex-cloud.yml`: каждая публикация в `main` собирает сайт и синхронизирует `dist/` в Yandex Object Storage.
+- Созданы публичные бакеты `vershina71.ru` (статический сайт: `index.html`, ошибка: `index.html`) и `www.vershina71.ru` (HTTPS-редирект на основной домен).
+- Создана Cloud DNS-зона `vershina71.ru.`: `dns9hc6ec1t89j77rka1`. После завершения миграции делегировать домен на `ns1.yandexcloud.net` и `ns2.yandexcloud.net` в REG.RU; рабочие записи — ANAME `@` на `vershina71.ru.website.yandexcloud.net.` и CNAME `www` на `www.vershina71.ru.website.yandexcloud.net.`.
+- Для GitHub Actions создан сервисный аккаунт `vershina71-deployer` (`ajeiundvto7br9h83cg6`) с ролью `storage.editor` в каталоге. Статический ключ лежит только в GitHub Actions Secrets под именами `YC_STATIC_ACCESS_KEY_ID` и `YC_STATIC_SECRET_ACCESS_KEY`; значения ключа не сохранять в репозитории и документации.
+- GitHub Pages оставлен включённым как аварийный откат до подтверждённой работы Object Storage и HTTPS.
+
 ## Изображения
 
 - Hero: `public/images/hero-tula.webp`.
